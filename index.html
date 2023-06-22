@@ -1,2 +1,78 @@
-<%21DOCTYPE%2BHTML><html>%2B<head>%2B%2B<title>⼤哥⼤使⽤意见调查表%2B%2B<%2Ftitle>%2B%2B<style%2Btype%3D"text%2Fcss">%2B%2B%2Bform%7Bfont-family%3A仿宋%3B%7D%2B%2B<%2Fstyle>%2B<%2Fhead>%2B<body%2Bbackground%3D"img%2Ffree0.gif">%2B%2B<p%2Balign%3D"center"><img%2Bsrc%3D"img%2Ffree1.jpg"%2F><%2Fp>%2B%2B<form>姓名：<input%2Btype%3D"text"%2Bname%3D"name"%2Bsize%3D"30"%2F><br%2F><br%2F>%2B<%21--type%3D"text"是普通⽂本框的表⽰⽅式-->%2B%2B%2BE-Mail%3A<input%2Btype%3D"text"%2Bvalue%3D"userman%40mailserver"%2Bsize%3D"30"%2Bid%3D"mail"%2Bname%3D"mail"><br%2F><br%2F>年龄<input%2Btype%3D"radio"%2Bname%3D"age"%2Bvalue%3D"未满20岁"%2F>未满20岁%2B%2B<%21--type%3D"radio"为单选框的表⽰⽅式-->%2B%2B%2B%2B%2B%2B<input%2Btype%3D"radio"%2Bname%3D"age"%2Bvalue%3D"20~29"%2F>20~29%2B%2B%2B%2B%2B%2B<input%2Btype%3D"radio"%2Bname%3D"age"%2Bvalue%3D"30~39"%2F>30~39%2B%2B%2B%2B%2B%2B<input%2Btype%3D"radio"%2Bname%3D"age"%2Bvalue%3D"40~49"%2F>40~49%2B%2B%2B%2B%2B%2B<input%2Btype%3D"radio"%2Bname%3D"age"%2Bvalue%3D"50以上">50以上<br%2F><br%2F>您使⽤过哪些品牌的⼿机？<input%2Btype%3D"checkbox"%2Bname%3D"phone"%2Bvalue%3D"hTC"%2F>hTC%2B<%21--type%3D"checkbox"为复选框的表⽰⽅式-->%2B%2B%2B%2B%2B%2B%2B%2B%2B<input%2Btype%3D"checkbox"%2Bname%3D"phone"%2Bvalue%3D"Apple"%2F>Apple%2B%2B%2B%2B%2B%2B%2B%2B%2B<input%2Btype%3D"checkbox"%2Bname%3D"phone"%2Bvalue%3D"ASUS"%2F>ASUS%2B%2B%2B%2B%2B%2B%2B%2B%2B<input%2Btype%3D"checkbox"%2Bname%3D"phone"%2Bvalue%3D"acer"%2F>acer<br%2F><br%2F>恁使⽤⼿机时最常碰到哪些问题？<br%2F>%2B%2B%2B%2B%2B%2B%2B%2B<%21--以下textarea为⽂本块的表⽰⽅式-->%2B%2B%2B<textarea%2Btype%3D"text"%2Bstyle%3D"width%3A500px%3Bheight%3A100px"%2Bid%3D"text1"%2B>连接速度不够快<%2Ftextarea><br%2F><br%2F>您使⽤过哪家业者的门号？（可复选）%2B%2B%2B<select>%2B%2B<%21--select为下拉框需要的-->%2B%2B%2B%2B<option%2Bname%3D"owner"%2Bvalue%3D"请选择">请选择<%2Foption>%2B%2B%2B%2B<option%2Bname%3D"owner"%2Bvalue%3D"中华电信">中华电信<%2Foption>%2B%2B%2B%2B<option%2Bname%3D"owner"%2Bvalue%3D"台湾⼤哥⼤">台湾⼤哥⼤<%2Foption>%2B%2B%2B%2B<option%2Bname%3D"owner"%2Bvalue%3D"远传">远传<%2Foption>%2B%2B%2B%2B<option%2Bname%3D"owner"%2Bvalue%3D"戚宝">戚宝<%2Foption>%2B%2B%2B<%2Fselect><br%2F><br%2F>%2B%2B%2B<input%2Btype%3D"submit"%2Bvalue%3D"提交">%2B%2B%2B<input%2Btype%3D"reset"%2Bvalue%3D"重新输⼊">
-  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 100px;
+    }
+
+    textarea {
+        width: 200px;
+        height: 100px;
+        border: 1px pink solid;
+        /* 不设置轮廓 */
+        outline: none;
+        /* 设置其不能改变长宽 */
+        resize: none;
+    }
+
+    li {
+        width: 300px;
+        padding: 5px;
+        background-color: #eee;
+        font-size: 15px;
+        margin: 15px 0;
+    }
+
+    li a {
+        float: right;
+    }
+</style>
+
+<body>
+    <textarea></textarea>
+    <button>发布</button>
+    <ul></ul>
+    <script>
+        //1、获取元素
+        var txt = document.querySelector("textarea");
+        var btn = document.querySelector("button");
+        var ul = document.querySelector("ul");
+        //2、给button绑定点击事件
+        btn.onclick = function () {
+            if (txt.value == "") {//当文本框中没有文字时，提示
+                alert("您没有输入内容")
+            } else {
+                //创建元素li作为留言区
+                var li = document.createElement("li");
+                //将文本框中的内容放到li中,a标签中href中的内容代表什么都不执行
+                li.innerHTML = txt.value + "<a href='javascript:;'>删除</a>"
+                txt.value = "";//添加之后文本框的内容清空
+                //将留言添加到ul中，而且在最上方
+                ul.insertBefore(li, ul.children[0]);
+                //当点击删除时删除ul中的li
+                var as = document.querySelectorAll("a");
+                //循环给每个删除绑定事件
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        //删除当前a标签所在位置的父节点li
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
